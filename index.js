@@ -21,7 +21,17 @@ mongoose
   })
   .then(() => {
     // Run your code here, after you have insured that the connection was made
+    let myRecipe = {
+      title: "dulce de leche",
+      level: "Easy Peasy"
+    }
+    return Recipe.create(myRecipe)
   })
+  
+  .then((data) => {
+     
+  })
+
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
