@@ -21,21 +21,18 @@ mongoose
   })
   .then((result) => {
     // Run your code here, after you have insured that the connection was made
-     Recipe.create({
-      title: "Biggot Sandwich",
-      level: "Amateur Chef",
-      ingredients: [
-        "Layers of ham", "bacon", "turkey","juicy tomatoes", "cheese" 
-      ],
-      cuisine: "American",
-      dishType: "other",
-      image: "https://images.media-allrecipes.com/images/75131.jpg",
-      duration: 50,
-      creator: "Chef Billy Bob"
-    })
+     return Recipe.insertMany(data)
   })
   .then((result) => {
+     return result.forEach((recipe) => {console.log(recipe.title)})
+  })
+  .then((result) => {
+    return Recipe.updateOne({title: "Rigatoni alla Genovese"}, {duration: 100})
+  })
+  .then((result) => {
+    Recipe.deleteOne( { title: "Carrot Cake" } ).then((result) => {
       console.log(result)
+    })
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
