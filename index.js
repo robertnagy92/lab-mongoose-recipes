@@ -34,6 +34,11 @@ mongoose
       console.log(result)
     })
   })
+  .then(() => {
+    mongoose.connection.close()
+    console.log("Database closed")
+  })
+
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
