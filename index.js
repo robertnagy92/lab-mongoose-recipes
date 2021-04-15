@@ -19,19 +19,24 @@ mongoose
     // Before adding any documents to the database, let's delete all previous entries
     return self.connection.dropDatabase();
   })
-  .then(() => {
+  .then((result) => {
     // Run your code here, after you have insured that the connection was made
-    let myRecipe = {
-      title: "dulce de leche",
-      level: "Easy Peasy"
-    }
-    return Recipe.create(myRecipe)
+     Recipe.create({
+      title: "Biggot Sandwich",
+      level: "Amateur Chef",
+      ingredients: [
+        "Layers of ham", "bacon", "turkey","juicy tomatoes", "cheese" 
+      ],
+      cuisine: "American",
+      dishType: "other",
+      image: "https://images.media-allrecipes.com/images/75131.jpg",
+      duration: 50,
+      creator: "Chef Billy Bob"
+    })
   })
-  
-  .then((data) => {
-     
+  .then((result) => {
+      console.log(result)
   })
-
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
